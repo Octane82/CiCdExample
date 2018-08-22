@@ -19,7 +19,7 @@ class ExampleUnitTest {
 
     @Test
     fun exampleTestOne() {
-        assertEquals("Its a string", "Its a string OIPP")
+        assertEquals("Its a string", "Its a string")
     }
 
 
