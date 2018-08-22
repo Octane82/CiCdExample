@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CiCdExample</string>
+
+    <string name="hello_world">Hello world</string>
+
+
 </resources>
