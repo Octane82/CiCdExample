@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayMessageActivity" />
+
+        <service android:name=".ServiceForTest" />
     </application>
 
 </manifest>

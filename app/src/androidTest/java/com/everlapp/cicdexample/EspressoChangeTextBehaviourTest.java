@@ -17,9 +17,13 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+
+/**
+ * https://developer.android.com/training/testing/espresso/
+ */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class ChangeTextBehaviourTest {
+public class EspressoChangeTextBehaviourTest {
 
     private String mStringToBeTyped;
 
