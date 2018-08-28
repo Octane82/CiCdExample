@@ -37,7 +37,13 @@ dependencies {
 
     // Test
     testImplementation 'junit:junit:4.12'
+    // V1 for instrumentation tests
     testImplementation 'org.mockito:mockito-core:1.10.19'
+
+    // required if you want to use Mockito for unit tests
+    testImplementation 'org.mockito:mockito-core:2.7.22'
+    // required if you want to use Mockito for Android tests
+    androidTestImplementation 'org.mockito:mockito-android:2.7.22'
 
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
