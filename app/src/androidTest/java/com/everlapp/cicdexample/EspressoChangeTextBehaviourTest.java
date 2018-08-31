@@ -25,8 +25,24 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @LargeTest
 public class EspressoChangeTextBehaviourTest {
 
+
+    /**
+     *
+     *  Espresso — основной класс. Содержит в себе статические методы, такие как нажатия на системные кнопки (Back, Home), вызвать/спрятать клавиатуру, открыть меню, обратится к компоненту.
+        ViewMatchers — позволяет найти компонент на экране в текущей иерархии.
+        ViewActions — позволяет взаимодействовать с компонентом (click, longClick, doubleClick, swipe, scroll и т.д.).
+        ViewAssertions — позволяет проверить состояние компонента.
+     *
+     */
+
+
+
+
     private String mStringToBeTyped;
 
+    /**
+     * Запускает Activity перед каждым тестом и заврывает его после
+     */
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class);
 

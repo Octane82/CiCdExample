@@ -49,7 +49,7 @@ public class SimpleIntentTest {
         intended(allOf(
                 hasComponent(hasShortClassName(".DisplayMessageActivity")),
                 toPackage(PACKAGE_NAME),
-                hasExtra(MainActivity.EXTRTA_MESSAGE, MESSAGE)));
+                hasExtra(MainActivity.EXTRA_MESSAGE, MESSAGE)));
 
 
     }

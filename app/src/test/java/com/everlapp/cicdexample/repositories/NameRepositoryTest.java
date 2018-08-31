@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+import io.reactivex.observers.TestObserver;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.mock;
@@ -76,6 +78,15 @@ public class NameRepositoryTest {
         assertNotEquals(name, "Mia");
     }
 
+
+    /**
+     * RxJava test
+     */
+    @Test
+    public void getNameRx() {
+        TestObserver<String> observer = nameRepository.getNameRx().test();
+        observer.assertValue("Dima");
+    }
 
 
 }

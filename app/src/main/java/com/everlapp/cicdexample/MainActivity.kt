@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        const val EXTRTA_MESSAGE = "extra_message"
+        const val EXTRA_MESSAGE = "extra_message"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +27,20 @@ class MainActivity : AppCompatActivity() {
         // Send intent to another activity
         btnSendMessage.setOnClickListener{
             val bundle = Bundle()
-            bundle.putString(EXTRTA_MESSAGE, "This is a test")
+            bundle.putString(EXTRA_MESSAGE, "This is a test")
             val intent = Intent(this, DisplayMessageActivity::class.java)
             intent.putExtras(bundle)
 
             startActivity(intent)
         }
+
+
+        // Add fragment
+        /*supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragmentContainer, UsersFragment())
+                .addToBackStack(null)
+                .commit()*/
 
     }
 }

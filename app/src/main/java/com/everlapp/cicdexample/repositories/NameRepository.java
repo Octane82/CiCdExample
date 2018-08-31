@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 
+import io.reactivex.Single;
+
 /**
  * Class for test V1
  */
@@ -24,6 +26,13 @@ public class NameRepository {
         return user.name;
     }
 
+
+    public Single<String> getNameRx() {
+        return Single.create(emitter -> {
+            Gson gson = new Gson();
+            emitter.onSuccess(gson.fromJson(fileReader.readFile(), User.class).name);
+        });
+    }
 
 
     /*public String readFile() throws FileNotFoundException {
