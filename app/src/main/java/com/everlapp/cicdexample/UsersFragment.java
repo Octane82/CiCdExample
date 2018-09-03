@@ -13,11 +13,15 @@ import com.everlapp.cicdexample.repositories.FileReader;
 import com.everlapp.cicdexample.repositories.NameRepository;
 
 import java.io.File;
-import java.io.IOException;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class UsersFragment extends Fragment {
 
     private TextView textView;
+    private Disposable disposable;
 
     @Nullable
     @Override
@@ -25,11 +29,20 @@ public class UsersFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         textView = new TextView(getActivity());
-        try {
+
+        /*try {
             textView.setText(createNameRepository().getName());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return textView;*/
+
+        disposable =
+                createNameRepository()
+                .getNameRx()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(name -> textView.setText(name));
         return textView;
     }
 
@@ -46,6 +59,7 @@ public class UsersFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        disposable.dispose();
         textView = null;
     }
 }

@@ -49,7 +49,7 @@ public class OpenFragmentRule<A extends AppCompatActivity> implements TestRule {
     }
 
 
-    public static void openFragment(AppCompatActivity activity, Fragment newFragment) {
+    private static void openFragment(AppCompatActivity activity, Fragment newFragment) {
         activity
                 .getSupportFragmentManager()
                 .beginTransaction()

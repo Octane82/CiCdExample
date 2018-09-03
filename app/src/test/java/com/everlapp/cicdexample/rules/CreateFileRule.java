@@ -1,4 +1,4 @@
-package com.everlapp.cicdexample.repositories;
+package com.everlapp.cicdexample.rules;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
