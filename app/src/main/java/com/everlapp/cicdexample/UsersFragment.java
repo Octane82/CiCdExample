@@ -14,6 +14,7 @@ import com.everlapp.cicdexample.repositories.FileReader;
 import com.everlapp.cicdexample.repositories.NameRepository;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -36,19 +37,22 @@ public class UsersFragment extends Fragment implements UserPresenter.Listener {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        /*try {
+        textView = new TextView(getActivity());
+
+        try {
             textView.setText(createNameRepository().getName());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return textView;*/
+
+        //return textView;
 
         ((App) getActivity().getApplication())
                 .getComponent()
                 .createUserComponent(new UserModule(this))
                 .injectsUserFragment(this);
 
-        textView = new TextView(getActivity());
+        // textView = new TextView(getActivity());
 
         /*disposable = nameRepository
                 .getNameRx()
@@ -56,7 +60,7 @@ public class UsersFragment extends Fragment implements UserPresenter.Listener {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(name -> textView.setText(name), Throwable::printStackTrace);*/
 
-        presenter.getUserName();
+        // presenter.getUserName();
 
         return textView;
     }
@@ -74,7 +78,7 @@ public class UsersFragment extends Fragment implements UserPresenter.Listener {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        disposable.dispose();
+            // disposable.dispose();
         textView = null;
     }
 

@@ -24,4 +24,8 @@ public class App extends Application {
         return component;
     }
 
+
+    public void setComponentForTest(ApplicationComponent component) {
+        this.component = component;
+    }
 }

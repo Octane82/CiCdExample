@@ -3,6 +3,8 @@ package com.everlapp.cicdexample.rules;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
+import com.everlapp.cicdexample.di.ApplicationComponent;
+
 import org.junit.rules.RuleChain;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
@@ -20,6 +22,22 @@ public class FragmentTestRule<A extends AppCompatActivity, F extends Fragment> i
         this.activityRule = new ActivityTestRule<>(activityClass);
         ruleChain = RuleChain
                 .outerRule(activityRule)
+                .around(new OpenFragmentRule<>(activityRule, fragment));
+    }
+
+    /**
+     * With Dagger 2
+     * @param activityClass
+     * @param fragment
+     * @param component
+     */
+    public FragmentTestRule(
+            Class<A> activityClass, F fragment, ApplicationComponent component) {
+        this.fragment = fragment;
+        this.activityRule = new ActivityTestRule<>(activityClass);
+        ruleChain = RuleChain
+                .outerRule(activityRule)
+                .around(new TestDaggerComponentRule<>(activityRule, component))
                 .around(new OpenFragmentRule<>(activityRule, fragment));
     }
 
