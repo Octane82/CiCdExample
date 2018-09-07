@@ -9,27 +9,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.everlapp.cicdexample.di.UserModule;
 import com.everlapp.cicdexample.repositories.FileReader;
 import com.everlapp.cicdexample.repositories.NameRepository;
 
 import java.io.File;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class UsersFragment extends Fragment {
+public class UsersFragment extends Fragment implements UserPresenter.Listener {
 
     private TextView textView;
     private Disposable disposable;
+
+    //@Inject NameRepository nameRepository;
+
+    @Inject UserPresenter presenter;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        textView = new TextView(getActivity());
-
         /*try {
             textView.setText(createNameRepository().getName());
         } catch (IOException e) {
@@ -37,12 +43,21 @@ public class UsersFragment extends Fragment {
         }
         return textView;*/
 
-        disposable =
-                createNameRepository()
+        ((App) getActivity().getApplication())
+                .getComponent()
+                .createUserComponent(new UserModule(this))
+                .injectsUserFragment(this);
+
+        textView = new TextView(getActivity());
+
+        /*disposable = nameRepository
                 .getNameRx()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(name -> textView.setText(name));
+                .subscribe(name -> textView.setText(name), Throwable::printStackTrace);*/
+
+        presenter.getUserName();
+
         return textView;
     }
 
@@ -61,5 +76,15 @@ public class UsersFragment extends Fragment {
         super.onDestroyView();
         disposable.dispose();
         textView = null;
+    }
+
+    @Override
+    public void onUserNameLoaded(String message) {
+        textView.setText(message);
+    }
+
+    @Override
+    public void onGettingUserNameError(String message) {
+        textView.setText(message);
     }
 }

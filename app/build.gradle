@@ -4,6 +4,26 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+project.ext {
+    daggerVersion = "2.11"
+
+    /*supportLibraryVersion = "27.1.1"
+    androidArchVersion = "1.1.1"
+    moxyVersion = "1.5.5"
+    butterKnifeVersion = "8.7.0"
+    rxJavaVersion = "2.1.0"
+    rxAndroidVersion = "2.0.1"
+    timberVersion = "4.5.1"
+    priorityJobQueueVersion = "2.0.1"
+    playServicesVersion = "15.0.1"
+    retrofitVersion = "2.1.0"
+    okHttpVersion = "3.4.1"
+    rxRelayVersion = "2.0.0"
+    rxLintVersion = "1.6"*/
+}
+
+
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -86,5 +106,14 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:2.2.1"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
+
+    // Dagger core
+    annotationProcessor "com.google.dagger:dagger-compiler:$project.daggerVersion"
+    implementation "com.google.dagger:dagger:$project.daggerVersion"
+    // Dagger Android
+    annotationProcessor "com.google.dagger:dagger-android-processor:$project.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$project.daggerVersion"
+    // if you are not using support library, include this instead
+    implementation "com.google.dagger:dagger-android:$project.daggerVersion"
 
 }

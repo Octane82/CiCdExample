@@ -13,6 +13,7 @@ import org.mockito.junit.MockitoRule;
 import org.robolectric.RobolectricTestRunner;
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import io.reactivex.subjects.PublishSubject;
 
@@ -38,6 +39,9 @@ public class UserPresenterTest {
 
     @Mock NameRepository nameRepository;
 
+    @Mock Logger logger;
+
+
     PublishSubject<String> nameObservable = PublishSubject.create();
 
     UserPresenter presenter;
@@ -46,7 +50,7 @@ public class UserPresenterTest {
     public void setUp() {
         when(nameRepository.getNameRx()).thenReturn(nameObservable.firstOrError());
 
-        presenter = new UserPresenter(listener, nameRepository);
+        presenter = new UserPresenter(listener, nameRepository, logger);
     }
 
 
