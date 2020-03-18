@@ -1,7 +1,7 @@
 package com.everlapp.cicdexample.rules;
 
-import android.support.test.espresso.intent.rule.IntentsTestRule;
-import android.support.v7.app.AppCompatActivity;
+import androidx.test.espresso.intent.rule.IntentsTestRule;
+import androidx.appcompat.app.AppCompatActivity;
 import org.junit.rules.RuleChain;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
@@ -33,7 +33,7 @@ import org.junit.runners.model.Statement;
  */
 public class ActivityTestRule<A extends AppCompatActivity> implements TestRule {
 
-    private final android.support.test.rule.ActivityTestRule<A> activityRule;
+    private final androidx.test.rule.ActivityTestRule<A> activityRule;
     private final RuleChain ruleChain;
 
     /**
@@ -51,7 +51,7 @@ public class ActivityTestRule<A extends AppCompatActivity> implements TestRule {
      *
      * @return current launched ActivityTestRule instance.
      */
-    public android.support.test.rule.ActivityTestRule<A> getActivityRule() {
+    public androidx.test.rule.ActivityTestRule<A> getActivityRule() {
         return activityRule;
     }
 

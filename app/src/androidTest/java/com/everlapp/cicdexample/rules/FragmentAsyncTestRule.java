@@ -1,8 +1,8 @@
 package com.everlapp.cicdexample.rules;
 
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.everlapp.cicdexample.R;
 
@@ -12,11 +12,11 @@ import org.junit.runners.model.Statement;
 
 public class FragmentAsyncTestRule<A extends AppCompatActivity> implements TestRule {
 
-    private final android.support.test.rule.ActivityTestRule<A> activityRule;
+    private final androidx.test.rule.ActivityTestRule<A> activityRule;
     private final Fragment fragment;
 
     public FragmentAsyncTestRule(Class<A> activityClass, Fragment fragment) {
-        this.activityRule = new android.support.test.rule.ActivityTestRule<>(activityClass);
+        this.activityRule = new androidx.test.rule.ActivityTestRule<>(activityClass);
         this.fragment = fragment;
     }
 

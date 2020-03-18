@@ -1,11 +1,8 @@
 package com.everlapp.cicdexample;
 
-import android.support.test.InstrumentationRegistry;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.everlapp.cicdexample.di.ApplicationComponent;
-import com.everlapp.cicdexample.di.UserComponent;
-import com.everlapp.cicdexample.di.UserModule;
 import com.everlapp.cicdexample.rules.CreateFileRule;
 import com.everlapp.cicdexample.rules.FragmentAsyncTestRule;
 import com.everlapp.cicdexample.rules.FragmentTestRule;
@@ -20,21 +17,14 @@ import org.junit.runner.RunWith;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Singleton;
-
-import dagger.Component;
-import dagger.Module;
-import dagger.Provides;
-
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.awaitility.Awaitility.await;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 
 @RunWith(AndroidJUnit4.class)

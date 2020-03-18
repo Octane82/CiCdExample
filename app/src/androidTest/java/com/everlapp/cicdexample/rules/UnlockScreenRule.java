@@ -1,7 +1,7 @@
 package com.everlapp.cicdexample.rules;
 
-import android.support.test.rule.ActivityTestRule;
-import android.support.v7.app.AppCompatActivity;
+import androidx.test.rule.ActivityTestRule;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import org.junit.rules.TestRule;

@@ -1,6 +1,6 @@
 package com.everlapp.cicdexample.rules;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.everlapp.cicdexample.App;
 import com.everlapp.cicdexample.di.ApplicationComponent;
